@@ -1,12 +1,14 @@
-FROM alpine:3.13.5
+FROM node:14-alpine
 
 RUN apk update; \
-    apk add --update nodejs npm curl
+    mkdir /app; \
+    chown -R node:node /app
 
-RUN mkdir /app
-ADD . /app/
+COPY --chown=node:node . /app
 
 WORKDIR /app
+
+USER node
 
 RUN npm install
 
