@@ -2,9 +2,12 @@ const express = require('express')
 const app = express()
 const port = 5000
 
+console.log(process.env);
+
 app.get('/info', (req, res) => {
     console.log({ message: "log info" });
-    res.send('console.log!')
+    console.log(process.env.DB_HOST);
+    res.send('console.log! DBHOST' + process.env.DB_HOST)
 })
 
 app.get('/warning', (req, res) => {
